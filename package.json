@@ -1,0 +1,28 @@
+{
+  "name": "vidavatel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "discord.js": "^11.3.2",
+    "discord.js-commando": "^0.10.0",
+    "ip-info": "0.0.1",
+    "latlon-to-xyz": "^1.0.1",
+    "log-js": "^1.6.2",
+    "ms": "^2.1.1",
+    "mysql": "^2.16.0",
+    "node-opus": "^0.3.0",
+    "request": "^2.87.0",
+    "sqlite3": "^4.0.2",
+    "staticmaps": "^0.7.6",
+    "superagent": "^3.8.3",
+    "vimelib": "^1.0.0",
+    "ytdl-core": "^0.21.1"
+  }
+}
