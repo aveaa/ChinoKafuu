@@ -11,6 +11,7 @@ Settings->Config Vars.
  4. SQLDATA - *База*
  5. BOTTOKEN - *Discord API Token*
  6. VIMEAPI - *VimeWorld API Token*
-    
-Готово, бот готов к запуску.
-Только не забудь пригласить бота на сервера :)
+
+Далее импортируйте kafuu.sql, в вашу бд. 
+
+Готово. Бот готов к запуску.
