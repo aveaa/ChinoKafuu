@@ -4,7 +4,7 @@ var logger              = require("log-js")();
 var mysql               = require("mysql")
 var timeout             = ms => new Promise(res => setTimeout(res, ms))
 var client              = new CommandoClient({
-                            commandPrefix: 'ch! ',
+                            commandPrefix: 'ch!',
                             owner: '479415764177387532',
                             disableEveryone: true,
                             unknownCommandResponse: false
@@ -39,7 +39,7 @@ client.registry
 client.on("ready", () => { 
     mysqlConnection.connect();
     logger.success("Chino Kafuu запущена :з"); 
-    client.user.setActivity(`chino help | в ${client.guilds.size} группах`, {type: "WATCHING"})
+    client.user.setActivity(`ch!help | в ${client.guilds.size} группах`, {type: "WATCHING"})
 })
 client.on("error", logger.error)
 client.on("warning", logger.warning)
@@ -69,24 +69,21 @@ client.on("guildMemberAdd", async (user) => {
 client.on("guildCreate", async (guild) => {
     mysqlConnection.query(`INSERT into guilds (id, name) values ('${guild.id}', '${guild.name}')`)
     const getDefaultChannel = async (guild) => {
-        // get "original" default channel
-        if(guild.channels.has(guild.id))
-          return guild.channels.get(guild.id)
-      
-        // Check for a "general" channel, which is often default chat
-        if(guild.channels.exists("name", "general"))
-          return guild.channels.find("name", "general");
-        
-          if(guild.channels.exists("name", "основной"))
-          return guild.channels.find("name", "основной");
-        // Now we get into the heavy stuff: first channel in order where the bot can speak
-        // hold on to your hats!
+        if (guild.channels.has(guild.id))
+            return guild.channels.get(guild.id)
+
+        if (guild.channels.exists("name", "general"))
+            return guild.channels.find("name", "general");
+
+        if (guild.channels.exists("name", "основной"))
+            return guild.channels.find("name", "основной");
+
         return guild.channels
-         .filter(c => c.type === "text" &&
-           c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
-         .sort((a, b) => a.position - b.position ||
-           Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
-         .first();
+            .filter(c => c.type === "text" &&
+                c.permissionsFor(guild.client.user).has("SEND_MESSAGES"))
+            .sort((a, b) => a.position - b.position ||
+                Long.fromString(a.id).sub(Long.fromString(b.id)).toNumber())
+            .first();
     }
     var ch = await getDefaultChannel(guild)
     ch .send(
