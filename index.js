@@ -2,9 +2,7 @@ var { CommandoClient }  = require('discord.js-commando');
 var path                = require('path');
 var logger              = require("log-js")();
 var mysql               = require("mysql")
-var sqlite3             = require('sqlite3').verbose();
 var timeout             = ms => new Promise(res => setTimeout(res, ms))
-var db                  = new sqlite3.Database('./db.sqlite3');
 var client              = new CommandoClient({
                             commandPrefix: 'ch! ',
                             owner: '479415764177387532',
