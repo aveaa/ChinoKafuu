@@ -35,7 +35,7 @@ client.registry
         prefix: false
     })
     .registerCommandsIn(path.join(__dirname, 'commands'))
-    
+
 client.on("ready", () => { 
     mysqlConnection.connect();
     logger.success("Chino Kafuu запущена :з"); 
